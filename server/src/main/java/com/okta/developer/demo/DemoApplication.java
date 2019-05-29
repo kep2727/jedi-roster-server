@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+//import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -14,7 +14,7 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Collections;
 import java.util.stream.Stream;
 
-@EnableResourceServer
+//@EnableResourceServer
 @SpringBootApplication
 public class DemoApplication {
 
@@ -25,8 +25,8 @@ public class DemoApplication {
     @Bean
     ApplicationRunner init(CarRepository repository) {
         return args -> {
-            Stream.of("Ferrari", "Jaguar", "Porsche", "Lamborghini", "Bugatti",
-                    "AMC Gremlin", "Triumph Stag", "Ford Pinto", "Yugo GV").forEach(name -> {
+            Stream.of("Obi-Wan Kenobi", "Yoda", "Qui-Gon Jinn", "Kit Fisto", "Mace Windu",
+                    "Ki-Adi-Mundi", "Plo Koon", "Luke Skywalker", "Anakin Skywalker").forEach(name -> {
                 Car car = new Car();
                 car.setName(name);
                 repository.save(car);
@@ -35,7 +35,7 @@ public class DemoApplication {
         };
     }
 
-    @Bean
+    /** @Bean
     public FilterRegistrationBean<CorsFilter> simpleCorsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
@@ -47,5 +47,5 @@ public class DemoApplication {
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
-    }
+    } **/
 }
