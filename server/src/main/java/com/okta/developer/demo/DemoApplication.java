@@ -10,11 +10,13 @@ import org.springframework.core.Ordered;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import java.util.Random;
 
 import java.util.Collections;
 import java.util.stream.Stream;
 
 //@EnableResourceServer
+
 @SpringBootApplication
 public class DemoApplication {
 
@@ -29,6 +31,14 @@ public class DemoApplication {
                     "Ki-Adi-Mundi", "Plo Koon", "Luke Skywalker", "Anakin Skywalker").forEach(name -> {
                 Car car = new Car();
                 car.setName(name);
+
+                Random random = new Random();
+                boolean isOne = random.nextBoolean();
+                if (isOne) {
+                    car.setPower("Force Lightning");
+                } else {
+                    car.setPower("Force Push");
+                }
                 repository.save(car);
             });
             repository.findAll().forEach(System.out::println);
